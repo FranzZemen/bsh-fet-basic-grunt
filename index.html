@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <!-- bower:css -->
+        <!-- endbower -->
+    </head>
+    <body ng-app="grunt">
+        <div>
+            <div>Hello World</div>
+            <br>
+            <form>
+                <label>Name: <input type="text" ng-model="name"></label>
+            </form>
+            <br>
+            <div>My name is: {{name}}</div>
+        </div>
+        <!-- bower:js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <!-- endbower -->
+        <script src="js/app.js"></script>
+    </body>
+</html>
