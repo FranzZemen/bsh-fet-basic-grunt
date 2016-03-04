@@ -19,11 +19,30 @@ module.exports = function (grunt) {
                     // https://github.com/taptapship/wiredep#configuration
                 }
             }
+        },
+        copy: {
+            dev: {
+                files: [
+                    {src: 'index.html', dest: 'dev/'},
+                    {src: ['templates/**', 'js/**'], dest:'dev/'}
+                ]
+            },
+            dist: {
+                files: [
+                    {src: 'index.html', dest: 'dist/'},
+                    {src: ['templates/**', 'js/**'], dest:'dist/'}
+                ]
+            }
+        },
+        clean: {
+            dev: ['./dev'],
+            dist: ['./dist']
         }
     });
     // Load npm plugin tasks
     grunt.loadNpmTasks('grunt-wiredep');
-
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     // define task
     grunt.registerTask('echo', function () {
         grunt.log.write('Hello World');
