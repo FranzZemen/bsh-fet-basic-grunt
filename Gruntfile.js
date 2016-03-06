@@ -1,9 +1,10 @@
 module.exports = function (grunt) {
     // Configuration things go here.
-
     require('jit-grunt')(grunt, {
 
     });
+
+
 
     // Call grunt's configuration method passing it the configuration object
     grunt.initConfig({
@@ -41,6 +42,15 @@ module.exports = function (grunt) {
         clean: {
             dev: ['./dev'],
             dist: ['./dist']
+        },
+        connect: {
+            dist: {
+                options: {
+                    port: 8080,
+                    base: 'dist',
+                    keepalive: true
+                }
+            }
         }
     });
 
@@ -49,7 +59,17 @@ module.exports = function (grunt) {
         grunt.log.write('Hello World');
     });
     grunt.registerTask('default',[
-        'echo',
-        'wiredep'
+        'build'
     ]);
+
+    grunt.registerTask('build', [
+          'echo',
+          'clean',
+          'wiredep',
+          'copy:dist'
+    ]);
+
+    grunt.registerTask('serve', function () {
+        return grunt.task.run(['build', 'connect:dist']);
+    });
 };
