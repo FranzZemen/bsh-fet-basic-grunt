@@ -1,6 +1,10 @@
 module.exports = function (grunt) {
     // Configuration things go here.
 
+    require('jit-grunt')(grunt, {
+
+    });
+
     // Call grunt's configuration method passing it the configuration object
     grunt.initConfig({
         wiredep: {
@@ -39,10 +43,7 @@ module.exports = function (grunt) {
             dist: ['./dist']
         }
     });
-    // Load npm plugin tasks
-    grunt.loadNpmTasks('grunt-wiredep');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
+
     // define task
     grunt.registerTask('echo', function () {
         grunt.log.write('Hello World');
